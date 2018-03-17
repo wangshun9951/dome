@@ -1,0 +1,169 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+//apply plugin: 'spring-boot' 
+apply plugin: 'org.springframework.boot' 
+apply plugin: 'war' 
+
+war {
+	baseName = 'ROOT'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+	
+	
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	//compile('org.springframework.boot:spring-boot-starter-aop')
+	//compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	//compile('org.springframework.boot:spring-boot-starter-validation')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	//compile('org.springframework.boot:spring-boot-starter-security')
+	
+	//<![if lt IE9]--><![endif]-->などのHTML条件付きコメント内部でthymeleafのexpressionを有効にする。
+	//compile('org.thymeleaf.extras:thymeleaf-extras-conditionalcomments:2.1.1.RELEASE')
+	compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
+	compile("org.mybatis:mybatis-typehandlers-jsr310:1.0.0")
+	//compile("commons-lang:commons-lang:2.6")
+	compile("org.apache.commons:commons-lang3:3.5")
+	//http://stackoverflow.com/questions/38703876/log-warning-thread-starvation-or-clock-leap-detected-housekeeper-delta-springh/38703956#38703956
+	compile("com.zaxxer:HikariCP:2.4.7")
+	compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+	compile("org.springframework.boot:spring-boot-devtools") // for h2-console
+	
+	//If you want more control over the compression, say over the level of compression,
+	//or want to exclude user agents from compression, you can use the GzipFilter class in Jetty
+	compile('org.eclipse.jetty:jetty-servlets')
+	
+	compile('io.springfox:springfox-swagger2:2.1.2')
+	compile('io.springfox:springfox-swagger-ui:2.1.2')
+	//To enable XML serialization with Spring Boot, you can add the following dependency to your classpath
+	//compile('com.fasterxml.jackson.dataformat:jackson-dataformat-xml')
+	//To get JSON back, you can either go to http://localhost:8080/api/users.json or send the appropriate Accept header with Postman or httpie.
+
+	//poi
+	compile('org.apache.poi:poi:3.14')
+	compile('org.apache.poi:poi-excelant:3.14')
+	compile('org.apache.poi:poi-ooxml:3.14')
+	compile('org.apache.poi:poi-ooxml-schemas:3.14')
+	compile('org.apache.poi:poi-scratchpad:3.14')
+	compile('org.apache.xmlbeans:xmlbeans:2.6.0')
+	
+	//Spring Mobile Device Resolution Support
+	compile("org.springframework.boot:spring-boot-starter-mobile:${springBootVersion}")
+	//itext pdf
+	compile('com.itextpdf:itextpdf:5.5.6')
+	compile('com.itextpdf.tool:xmlworker:5.5.6')
+	compile('com.itextpdf:itext-asian:5.2.0')
+	
+	//ehcache
+	compile('org.springframework:spring-context-support')
+	compile('net.sf.ehcache:ehcache')//To include Ehcache 2.x in your project, use
+	//compile('org.ehcache:ehcache') //To include Ehcache 3.x in your project, use
+
+	//
+	compile('com.github.pagehelper:pagehelper:4.1.6')
+	//compile ('javax.mail:mail:1.4.1')
+	compile("javax.servlet:jstl")
+	//Commons项目中用来处理常用的编码方法的工具类包，例如DES、SHA1、MD5、Base64，URL，Soundx等等。不仅是编码，也可用于解码。
+	compile 'commons-codec:commons-codec:1.4'
+	
+	
+	compile('commons-httpclient:commons-httpclient:3.1') {
+		exclude group: 'commons-logging'
+	}
+	compile 'commons-io:commons-io:2.4'
+	compile 'commons-fileupload:commons-fileupload:1.3.2'
+
+	compile 'org.apache.httpcomponents:httpclient:4.3.4'
+	compile 'org.apache.httpcomponents:httpcore:4.3.2'
+	compile 'org.apache.httpcomponents:httpmime'
+	
+	//Java HTML Parser
+	compile 'org.jsoup:jsoup:1.9.2'
+	//Support Chinese character (both Simplified and Tranditional) to most popular Pinyin systems, including Hanyu Pinyin, Tongyong Pinyin, Wade-Giles, MPS2, Yale and Gwoyeu Romatzyh. 
+	//Support multiple pronounciations and customized output.
+	compile 'com.belerweb:pinyin4j:2.5.0'
+	
+	
+	//The purpose of the library is to provide better image scaling options than the Java runtime provides.
+	compile 'com.mortennobel:java-image-scaling:0.8.6'
+	
+	compile 'net.sf.barcode4j:barcode4j:2.1'
+	compile 'org.apache.commons:commons-compress:1.14'
+	
+	compile 'com.google.code.gson:gson:2.2.2'
+	
+	//kindeditor
+	compile 'com.googlecode.json-simple:json-simple:1.1.1'
+	//Send XML Request
+	//compile 'com.sun.xml.bind:jaxb-impl:2.2.11'
+	
+	compile 'dom4j:dom4j:1.6.1'
+	
+	
+	compile 'org.springframework.boot:spring-boot-starter-mail'
+	compile 'org.springframework.boot:spring-boot-starter-freemarker'
+	
+	
+	compile 'net.sf.json-lib:json-lib:2.4:jdk15@jar'
+	compile 'net.sf.ezmorph:ezmorph:1.0.6'
+	compile 'commons-beanutils:commons-beanutils'
+	
+	
+	compile 'org.json:json:20170516'
+	
+	compile 'com.google.zxing:core:3.3.0'
+	compile 'com.google.zxing:javase:3.3.0'
+	
+	compile 'com.aliyun:aliyun-java-sdk-core:3.5.0'
+	compile 'org.apache.httpcomponents:httpasyncclient:4.1.3'
+
+	//runtime("org.webjars:bootstrap:3.3.5")
+	//runtime("org.webjars:font-awesome:4.4.0")
+	//runtime("org.webjars:html5shiv:3.7.2")
+	//runtime("org.webjars:respond:1.4.2")
+	//runtime('org.webjars:materializecss:0.96.0')
+	//runtime('org.webjars:jquery:2.1.4')
+
+	
+	runtime('mysql:mysql-connector-java')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	providedRuntime("org.apache.tomcat.embed:tomcat-embed-jasper")
+	testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+	//testCompile("junit:junit:4.12")
+	//testCompile("org.spockframework:spock-core:1.0-groovy-2.4")
+	//testCompile("org.spockframework:spock-spring:1.0-groovy-2.4")
+	
+	
+	
+}
+
+
+eclipse {
+	classpath {
+		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	}
+}

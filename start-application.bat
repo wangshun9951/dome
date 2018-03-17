@@ -1,0 +1,1 @@
+java -jar F:\\GZJZBD\\WorkSpaces\\STS-BASE\\build\\libs\\XSOFT-0.0.1-SNAPSHOT.war
